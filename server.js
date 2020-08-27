@@ -52,7 +52,7 @@ const Q1 = [
   },
 ];
 
-console.log(Q1);
+// console.log(Q1);
 function runSearch() {
   inquirer.prompt(Q1).then(function (answer) {
     switch (answer.action) {
@@ -107,7 +107,7 @@ function departmentView() {
   connection.query("SELECT * FROM department", function (err, res) {
     if (err) throw err;
     for (let i = 0; i < res.length; i++) {
-      choices.push(res[i].department_name);
+      choices.push(res[i].name);
     }
     dpInquire();
   });
@@ -165,7 +165,7 @@ function dpInquire() {
       name: "fName",
       type: "list",
       message: "What is the employees first name?",
-      choices: departments,
+    //   choices: departments,
     })
     .then(function (answer) {
       console.log(
