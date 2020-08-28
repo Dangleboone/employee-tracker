@@ -42,10 +42,7 @@ const Q1 = [
       "View All Employees",
       "View All Employees by Department",
       "View All Roles",
-      // "View All Employees By Manager",
-      // "Remove Employee",
-      "Update Employee Role",
-      // "Update Employee Manager",
+      "Update Employee Role",,
     ],
   },
 ];
@@ -71,18 +68,10 @@ function runSearch() {
       case "View All Roles":
         roleView();
         break;
-      // case "View All Employees By Manager":
-      //   managerView();
-      //   break;
-      // case "Remove Employee":
-      //   emplyeeRemove();
-      //   break;
       case "Update Employee Role":
         employeeRole();
         break;
-      // case "Update Employee Manager":
-      //   emplyeeManager();
-      //   break;
+
     }
   });
 }
@@ -207,7 +196,7 @@ function allEmployeesView() {
     }
   );
 }
-//This displays each team based on department selected
+
 function departmentView() {
   connection.query("SELECT * FROM department", function (err, res) {
     if (err) throw err;
@@ -230,7 +219,6 @@ function roleView() {
     });
   });
 }
-//This runs when User selects view by dept
 function dpInquire() {
   inquirer
     .prompt({
@@ -252,9 +240,7 @@ function dpInquire() {
           }
         )
       );
-      //Empties choices array to prevent continuous ly adding the same information
       choices.length = 0;
-      //Query to grab and display information
       const query =
         "SELECT first_Name, last_name, title, salary, manager_id FROM roles right JOIN employees using (role_id) left join department using (department_id) WHERE department_name = ?";
       connection.query(query, [answer.department], function (err, res) {
@@ -271,7 +257,6 @@ function employeeRole() {
     if (err) throw err;
     for (let i = 0; i < res.length; i++) {
       titles.push(res[i].title);
-      // console.log(titles)
     }
     inquirer
       .prompt([
