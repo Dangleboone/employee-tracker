@@ -4,7 +4,7 @@ const consoleTable = require("console.table");
 const chalk = require("chalk");
 const choices = [];
 
-//Figlet to make team tracker banner
+//Figlet with help from travis to help app look cooler
 var figlet = require("figlet");
 console.log(
   chalk.yellow.bgBlueBright.bold(
