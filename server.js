@@ -8,7 +8,7 @@ const choices = [];
 var figlet = require("figlet");
 console.log(
   chalk.yellow.bgBlueBright.bold(
-    figlet.textSync("Team Tracker", {
+    figlet.textSync("Employee Tracker", {
       horizontalLayout: "default",
       verticalLayout: "default",
       width: 80,
@@ -16,14 +16,11 @@ console.log(
     })
   )
 );
-
+//connection info
 const connection = mysql.createConnection({
   host: "localhost",
-  // Your port; if not 3306
   port: 3306,
-  // Your username
   user: "root",
-  // Your password
   password: "root",
   database: "employeetrackdb",
 });
